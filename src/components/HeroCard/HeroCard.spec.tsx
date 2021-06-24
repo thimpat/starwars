@@ -2,6 +2,8 @@ import React from 'react';
 import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import HeroCard from "./HeroCard";
 import * as mockData from "../../../mock/api-mock.json";
+import HeroSearchBar from "../HeroSearchBar/HeroSearchBar";
+import App from "../../App";
 
 describe('The HeroCard component', function () {
     beforeEach(()=>
@@ -25,7 +27,7 @@ describe('The HeroCard component', function () {
 
     it("should display display information about a character when the search button is pressed", async () => {
         render(
-            <HeroCard />
+            <App />
         )
 
         // Add a text to the input
@@ -35,6 +37,17 @@ describe('The HeroCard component', function () {
         // Press the search button
         const searchButton = screen.getByText("Search");
         fireEvent.click(searchButton);
+
+        await waitFor(() => expect(screen.getByText(/Luke Skywalker/i)).toBeInTheDocument());
+    });
+
+    it("should initiate a search when the Enter key is entered",  async() => {
+        render(<App/>);
+
+        // Add a text to the input
+        const inputBox = screen.getByPlaceholderText(/Enter Hero here/i);
+        fireEvent.change(inputBox, { target: { value: "Luke" } });
+        fireEvent.keyDown(inputBox, { key: "Enter", keyCode: 13 });
 
         await waitFor(() => expect(screen.getByText(/Luke Skywalker/i)).toBeInTheDocument());
     });
