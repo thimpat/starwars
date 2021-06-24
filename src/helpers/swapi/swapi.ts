@@ -27,7 +27,7 @@ export const requestCharacterInfo = async (name = ""): Promise<HeroType> =>
         const json = await response.json();
         if (!json || !json.results || !json.results.length)
         {
-            return {error: {message: "Query has returned no result"}};
+            return {error: {message: "Could not find entry"}};
         }
 
         // Return only the first result

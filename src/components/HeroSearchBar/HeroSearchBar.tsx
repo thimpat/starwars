@@ -3,7 +3,35 @@ import {ChangeEvent, useContext, useRef} from "react";
 import HeroCardContext from "../../contexts/HeroCardContext";
 
 const Container = styled.div`
-  border: solid 1px darkred;
+  background: rgb(235, 235, 235);
+  border: solid 2px rgb(119, 119, 119);
+  height: 64px;
+  margin: 18px auto;
+  padding: 8px;
+  width: 406px;
+
+  li {
+    span {
+      display: inline-block;
+      padding: 4px 10px 0 4px;
+    }
+
+    text-align: left;
+  }
+
+  input {
+    border-radius: 0;
+    padding: 4px 8px;
+    width: 264px;
+  }
+
+  button {
+    background: rgb(65, 140, 220);
+    border-radius: 0;
+    padding: 4px 20px;
+    text-transform: uppercase;
+  }
+
 `;
 
 function HeroSearchBar() {
@@ -20,13 +48,21 @@ function HeroSearchBar() {
 
     return (
         <Container>
-            <span><input type="text" ref={inputRef} placeholder="Enter Hero here"/> </span>
-            <button
-                   data-testid="search-button"
-                   onClick={updateActorName}
-            >
-                Search
-            </button>
+            <ul>
+                <li>
+                    <span>Character Name</span>
+                </li>
+                <li>
+                    <span><input type="text" ref={inputRef} placeholder="Enter Hero here"/> </span>
+
+                    <button
+                        data-testid="search-button"
+                        onClick={updateActorName}
+                    >
+                        Search
+                    </button>
+                </li>
+            </ul>
         </Container>
     );
 }
