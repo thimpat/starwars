@@ -9,7 +9,7 @@ describe("The Star Wars helper", () => {
         jest.spyOn(window, "fetch");
     });
 
-     describe("#requestCharacterInfo", () => {
+     describe.skip("#requestCharacterInfo", () => {
         it(`should invoke the swapi server`, async () => {
             const name = "Luke Skywalker"
             const info = await requestCharacterInfo(name);
