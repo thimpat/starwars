@@ -18,15 +18,8 @@ function HeroInfo() {
      */
     const fetchInfo = useCallback(
         async (name: string) => {
-            try {
-                const info = await requestCharacterInfo(name)
-                if (info.error) {
-                    return
-                }
-                setInfo(info)
-            } catch (e) {
-                console.error(e)
-            }
+            const info = await requestCharacterInfo(name)
+            setInfo(info)
         },
         [],
     );
@@ -39,30 +32,38 @@ function HeroInfo() {
     return (
         <Container>
             <table>
-                <thead><tr><td>{info.name}</td></tr></thead>
+                <thead>
+                <tr>
+                    <td>{info.name}</td>
+                </tr>
+                </thead>
                 <tbody>
-                    <tr>
-                        <td>Gender</td>
-                        <td>{info.gender}</td>
-                    </tr>
-                    <tr>
-                        <td>Birth Year</td>
-                        <td>{info.birth_year}</td>
-                    </tr>
-                    <tr>
-                        <td>Height</td>
-                        <td>{info.height}</td>
-                    </tr>
-                    <tr>
-                        <td>Mass</td>
-                        <td>{info.mass}</td>
-                    </tr>
-                    <tr>
-                        <td>Hair Color</td>
-                        <td>{info.hair_color}</td>
-                    </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>{info.gender}</td>
+                </tr>
+                <tr>
+                    <td>Birth Year</td>
+                    <td>{info.birth_year}</td>
+                </tr>
+                <tr>
+                    <td>Height</td>
+                    <td>{info.height}</td>
+                </tr>
+                <tr>
+                    <td>Mass</td>
+                    <td>{info.mass}</td>
+                </tr>
+                <tr>
+                    <td>Hair Color</td>
+                    <td>{info.hair_color}</td>
+                </tr>
                 </tbody>
-                <tfoot><tr><td>{info?.error?.message}</td></tr></tfoot>
+                <tfoot>
+                <tr>
+                    <td>{info?.error?.message}</td>
+                </tr>
+                </tfoot>
             </table>
         </Container>
     );
