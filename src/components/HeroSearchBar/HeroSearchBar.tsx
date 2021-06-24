@@ -46,6 +46,14 @@ function HeroSearchBar() {
         setSelectedActor(inputContent)
     }
 
+    const onKeyDown = (event: { keyCode: any; preventDefault: () => void; }) => {
+        const keyCode = event.keyCode;
+        if (keyCode === 13) {
+            event.preventDefault();
+            updateActorName();
+        }
+    };
+
     return (
         <Container>
             <ul>
@@ -53,7 +61,7 @@ function HeroSearchBar() {
                     <span>Character Name</span>
                 </li>
                 <li>
-                    <span><input type="text" ref={inputRef} placeholder="Enter Hero here"/> </span>
+                    <span><input type="text" ref={inputRef} onKeyDown={onKeyDown} placeholder="Enter Hero here"/> </span>
 
                     <button
                         data-testid="search-button"
