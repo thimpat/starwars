@@ -4,7 +4,7 @@
 yarn install
 ```
 
-# Run the app in dev. made
+# Run the app in dev. mode
 
 ```shell
 yarn start
@@ -28,7 +28,7 @@ yarn build
 npx serve -s build
 ```
 
-### Runs the app in the development mode.\
+### Runs the app in development mode.
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
