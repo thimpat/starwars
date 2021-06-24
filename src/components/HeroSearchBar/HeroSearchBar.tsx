@@ -1,34 +1,34 @@
 import styled from 'styled-components';
-import {ChangeEvent, useContext} from "react";
+import {ChangeEvent, useContext, useRef} from "react";
 import HeroCardContext from "../../contexts/HeroCardContext";
 
 const Container = styled.div`
   border: solid 1px darkred;
 `;
 
-let timerID: number = 0
-
 function HeroSearchBar() {
-    const { setSelectedActor } = useContext(HeroCardContext);
+    const {setSelectedActor} = useContext(HeroCardContext);
+    const inputRef = useRef<HTMLInputElement>(null)
 
     /**
      * Update character name to request to the server
-     * @param text
      */
-    const updateActorName = (text = "") =>
-    {
-        clearTimeout(timerID)
-        timerID = window.setTimeout(()=>
-        {
-            setSelectedActor(text)
-        }, 500)
+    const updateActorName = () => {
+        const inputContent = inputRef?.current?.value || ""
+        setSelectedActor(inputContent)
     }
 
-  return (
-    <Container>
-      <span><input type="text" placeholder="Enter Hero here" onChange={(e: ChangeEvent<HTMLInputElement>)=>updateActorName(e.currentTarget?.value)} /> </span>
-    </Container>
-  );
+    return (
+        <Container>
+            <span><input type="text" ref={inputRef} placeholder="Enter Hero here"/> </span>
+            <button
+                   data-testid="search-button"
+                   onClick={updateActorName}
+            >
+                Search
+            </button>
+        </Container>
+    );
 }
 
 export default HeroSearchBar;
