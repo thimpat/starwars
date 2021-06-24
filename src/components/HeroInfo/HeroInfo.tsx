@@ -20,8 +20,7 @@ function HeroInfo() {
         async (name: string) => {
             try {
                 const info = await requestCharacterInfo(name)
-                if (info.error)
-                {
+                if (info.error) {
                     return
                 }
                 setInfo(info)
@@ -39,29 +38,31 @@ function HeroInfo() {
 
     return (
         <Container>
-            <span>{info?.error?.message}</span>
             <table>
-                <thead>{info.name}</thead>
-                <tr>
-                    <td>Gender</td>
-                    <td>{info.gender}</td>
-                </tr>
-                <tr>
-                    <td>Birth Year</td>
-                    <td>{info.birth_year}</td>
-                </tr>
-                <tr>
-                    <td>Height</td>
-                    <td>{info.height}</td>
-                </tr>
-                <tr>
-                    <td>Mass</td>
-                    <td>{info.mass}</td>
-                </tr>
-                <tr>
-                    <td>Gender</td>
-                    <td>{info.gender}</td>
-                </tr>
+                <thead><tr><td>{info.name}</td></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>Gender</td>
+                        <td>{info.gender}</td>
+                    </tr>
+                    <tr>
+                        <td>Birth Year</td>
+                        <td>{info.birth_year}</td>
+                    </tr>
+                    <tr>
+                        <td>Height</td>
+                        <td>{info.height}</td>
+                    </tr>
+                    <tr>
+                        <td>Mass</td>
+                        <td>{info.mass}</td>
+                    </tr>
+                    <tr>
+                        <td>Hair Color</td>
+                        <td>{info.hair_color}</td>
+                    </tr>
+                </tbody>
+                <tfoot><tr><td>{info?.error?.message}</td></tr></tfoot>
             </table>
         </Container>
     );

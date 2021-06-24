@@ -4,6 +4,6 @@ import HeroInfo from "./HeroInfo";
 
 test('renders learn react link', () => {
     render(<HeroInfo />);
-    const linkElement = screen.getByText(/Star Wars Heroes/i);
+    const linkElement = screen.getByText(/Gender/i);
     expect(linkElement).toBeInTheDocument();
 });
