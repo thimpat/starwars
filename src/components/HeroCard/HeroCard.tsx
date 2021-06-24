@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import HeroCardContext from "../../contexts/HeroCardContext";
 import {useState} from "react";
+import HeroSearchBar from "../HeroSearchBar/HeroSearchBar";
 
 const Container = styled.div`
   border: 1px solid black;
@@ -21,7 +22,7 @@ function HeroCard() {
                         <h1>Star Wars Heroes</h1>
                     </li>
                     <li>
-                        {/*<HeroSearchBar/>*/}
+                        <HeroSearchBar/>
                     </li>
                     <li>
                         {/*<HeroInfo/>*/}
