@@ -2,6 +2,7 @@ import styled from "styled-components";
 import HeroCardContext from "../../contexts/HeroCardContext";
 import {useState} from "react";
 import HeroSearchBar from "../HeroSearchBar/HeroSearchBar";
+import HeroInfo from "../HeroInfo/HeroInfo";
 
 const Container = styled.div`
   border: 1px solid black;
@@ -25,7 +26,7 @@ function HeroCard() {
                         <HeroSearchBar/>
                     </li>
                     <li>
-                        {/*<HeroInfo/>*/}
+                        <HeroInfo/>
                     </li>
                 </ul>
             </Container>
